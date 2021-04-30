@@ -15,7 +15,9 @@ GameObject::GameObject(Screen& screen, int pos, const char* shape)
 	gameObjectManager.add(this);
 }
 
-GameObject::~GameObject() {}
+GameObject::~GameObject() {
+	gameObjectManager.remove(this);
+}
 
 void GameObject::setShape(const char* shape)
 {

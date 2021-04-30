@@ -1,11 +1,18 @@
 #include"GameObject.h"
+#include"GameObjectManager.h"
+#include"Screen.h"
+#include"UI.h"
 
-GameObject::GameObject(int pos, const char* shape) 
-	:pos(pos)
+GameObjectManager GameObject::gameObjectManager{ 1 };
+
+GameObject** GameObject::getGameObjects() { return gameObjectManager.getGameObjects(); }
+int GameObject::getMaxGameObject() { return gameObjectManager.getCapacity(); }
+
+GameObject::GameObject(Screen& screen, int pos, const char* shape) 
+	:screen(screen), pos(pos)
 {
 	setShape(shape);
-	cost = 50;
-	Field_Exist = false;
+	gameObjectManager.add(this);
 }
 
 GameObject::~GameObject() {}

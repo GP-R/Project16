@@ -140,18 +140,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Potato_Mine.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Potato_Mine.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="Sun.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

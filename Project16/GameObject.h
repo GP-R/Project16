@@ -1,21 +1,31 @@
 #pragma once
 #include<iostream>
 #include<conio.h>
-#include<Windows.h>
-#include<time.h>
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #endif
+#include<iostream>
+#include<conio.h>
+#include<Windows.h>
+#include<ctime>
+#include<Windows.h>
+#include<time.h>
+class GameObjectManager;
+class Screen;
 class GameObject {
-public:
-
 	int pos;
-	char shape[100];
-	int cost;
-	bool Field_Exist;
-	GameObject(int pos= -1, const char* shape="");
+	char* shape;
+	Screen& screen;
+	static GameObjectManager gameObjectManager;
+public:
+	GameObject(Screen& screen, int pos, const char* shape);
 	~GameObject();
+	const char* getShape() { return shape; }
+	int getPos() { return pos; }
+	Screen& getScreen() { return screen; }
 
+	GameObject** getGameObjects();
+	int getMaxGameObject();
 	void setShape(const char* shape);
 	void draw(char* canvas, int maxCount);
 	void All_UI_Draw(char* canvas);

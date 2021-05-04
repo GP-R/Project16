@@ -1,6 +1,4 @@
 #pragma once
-#include<iostream>
-#include<conio.h>
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #endif
@@ -12,6 +10,7 @@
 #include<time.h>
 class GameObjectManager;
 class Screen;
+
 class GameObject {
 	int pos;
 	char* shape;
@@ -19,18 +18,19 @@ class GameObject {
 	static GameObjectManager gameObjectManager;
 public:
 	GameObject(Screen& screen, int pos, const char* shape);
-	~GameObject();
-	const char* getShape() { return shape; }
-	int getPos() { return pos; }
-	Screen& getScreen() { return screen; }
+	virtual ~GameObject();
 
-	GameObject** getGameObjects();
-	int getMaxGameObject();
+	const char* getShape() const { return shape; }
+	int getPos() const { return pos; }
+	Screen& getScreen() const { return screen; }
+
+	static GameObject** getGameObjects();
+	static int getMaxGameObject();
+
 	void setShape(const char* shape);
-	void draw(char* canvas, int maxCount);
-	void All_UI_Draw(char* canvas);
-	void Cost_Draw(char* canvas, char* cost);
-	void Game_Map_Draw(char*canvas);
-	void UI_Draw(char* canvas);
-	virtual void Draw(int y, char *canvas);
+	void setPos(int pos) { this->pos = pos; }
+
+	virtual void draw();
+	virtual void moveLeft() { --pos; }
+	virtual void moveRight() { ++pos; }
 };

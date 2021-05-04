@@ -1,4 +1,4 @@
-#include "main.h"
+#include"GameObject.h"
 #define maxSetCount 9
 int main()
 {

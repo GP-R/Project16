@@ -32,26 +32,7 @@ void GameObject::setShape(const char* shape)
 		strcpy(this->shape, shape);
 }
 
-void GameObject::All_UI_Draw(char* canvas)
-{
-	strncpy(&canvas[8], "¡Û(50) ->(100) ¢Á(25) ¡á(50)", strlen("¡Û(50) ->(100) ¢Á(25) ¡á(50)"));
-}
-
-void GameObject::Cost_Draw(char* canvas, char* cost)
-{
-	strncpy(&canvas[3], cost, strlen(cost));
-}
-
-void GameObject::Game_Map_Draw(char*canvas)
-{
-	strncpy(&canvas[40], "¡à¡à¡à¡à¡à¡à¡à¡à¡à", strlen("¡à¡à¡à¡à¡à¡à¡à¡à¡à"));
-}
-
-void GameObject::UI_Draw(char* canvas) {
-	strncpy(&canvas[0], "¡Ü", strlen("¡Ü"));
-}
-
-void GameObject::Draw(int y, char* canvas)
+void GameObject::draw()
 {
 
 }

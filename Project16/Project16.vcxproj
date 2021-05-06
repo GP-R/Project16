@@ -152,7 +152,6 @@
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="Potato_Mine.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Shooter.h" />

@@ -1,3 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
+#include<conio.h>
+
 #include"GameObject.h"
 #include"GameObjectManager.h"
 #include"Screen.h"

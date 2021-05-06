@@ -3,6 +3,7 @@
 void Screen::clear()
 {
 	memset(canvas, ' ', len - 1);
+	canvas[len - 1] = '\0';
 }
 
 void Screen::render()

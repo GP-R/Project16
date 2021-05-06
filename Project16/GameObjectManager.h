@@ -7,9 +7,12 @@ class GameObjectManager {
 
 public:
 	GameObjectManager(int capacity)
-		:capacity(capacity)
+		:capacity(capacity), gos((GameObject**)malloc(sizeof(GameObject*)*capacity))
 	{
-		gos = (GameObject**)malloc(sizeof(GameObject*)* capacity);
+		for (int i = 0; i < capacity; i++)
+		{
+			gos[i] = (GameObject*)nullptr;
+		}
 	}
 
 	~GameObjectManager()

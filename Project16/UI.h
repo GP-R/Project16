@@ -21,4 +21,5 @@ public:
 	void process_input(int key);
 	void moveLeft();
 	void moveRight();
+	void update();
 };

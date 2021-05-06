@@ -1,20 +1,15 @@
 #include "Shooter.h"
 #include "GameObject.h"
-Shooter::Shooter(const char* shape)
-	:GameObject(-1, shape)
-{
-}
 Shooter::~Shooter()
 {
 }
 
-void Shooter::Draw(int y, char* canvas) {
-	Field_Exist = true;
+/*void Shooter::Draw(int y, char* canvas) {
 	strncpy(&canvas[y], "->", strlen("->"));
 
 
-}
-void Shooter::fire(int shooter_pos, Bullet* bullet)
+}*/
+/*void Shooter::fire(int shooter_pos, Bullet* bullet)
 {
 	if (bullet == nullptr) return;
 
@@ -32,35 +27,4 @@ void Shooter::fire(int shooter_pos, Bullet* bullet)
 		timeElapsed = 0.0f;
 	}
 	lastTime = curTime;
-}
-
-Bullet::Bullet(const char* shape)
-	:GameObject(-1, shape), isFired(false), pos(-1)
-{
-
-}
-
-Bullet::~Bullet() {};
-
-bool Bullet::isInside(int length)
-{
-	return pos <= (length - strlen(shape));
-}
-
-void Bullet::update(int enemy_pos)
-{
-	if (isFired == false) return;
-
-	pos++;
-	if (enemy_pos <= pos)
-	{
-		isFired = false;
-	}
-}
-
-void Bullet::draw(char* canvas, int maxCount)
-{
-	if (isFired == false) return;
-	if (isInside(maxCount) == false) return;
-	strncpy(&canvas[pos], shape, strlen(shape));
-}
+}*/

@@ -25,7 +25,6 @@ void GameObjectManager::remove(GameObject* obj)
 	if (obj == nullptr) return;
 	for (int i = 0; i < capacity; i++)
 	{
-		if (gos[i] == nullptr) continue;
 		if (gos[i] == obj)
 			gos[i] = nullptr;
 		return;

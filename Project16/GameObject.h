@@ -1,7 +1,4 @@
 #pragma once
-#ifndef _CRT_SECURE_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include<iostream>
 #include<conio.h>
 #include<Windows.h>
@@ -13,7 +10,7 @@ class Screen;
 
 class GameObject {
 	int pos;
-	char* shape;
+	char shape[100];
 	Screen& screen;
 	static GameObjectManager gameObjectManager;
 public:
@@ -33,4 +30,8 @@ public:
 	virtual void draw();
 	virtual void moveLeft() { --pos; }
 	virtual void moveRight() { ++pos; }
+
+	virtual void process_input(int key) {}
+	virtual void update() {}
+	
 };

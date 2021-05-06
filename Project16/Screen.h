@@ -1,5 +1,6 @@
 #pragma once
-#include"main.h"
+#include<iostream>
+#include<conio.h>
 class Screen {
 	int len;
 	char* canvas;
@@ -18,7 +19,7 @@ public:
 		len = 0;
 	}
 
-	int length() { return len - 1; }
+	int length() const { return len - 1; }
 	void clear();
 	void render();
 	void draw(const char* shape, int pos);

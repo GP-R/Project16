@@ -1,16 +1,11 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Sun.h"
-
-Sun::Sun(const char* shape)
-	:GameObject(0, shape)
-{
-	sun_energy = false;
-	energy_pos = -1;
-}
+#include<time.h>
 Sun::~Sun()
 {
 }
 
-void Sun::Draw(int y, char* canvas) {
+/*void Sun::Draw(int y, char* canvas) {
 	strncpy(&canvas[y], "¡Û", strlen("¡Û"));
 	srand((unsigned int)time(NULL));
 
@@ -34,7 +29,7 @@ void Sun::Draw(int y, char* canvas) {
 	}
 	lastTime = curTime;
 }
-
+*/
 void Sun::Energy(char* canvas) {
 
 }

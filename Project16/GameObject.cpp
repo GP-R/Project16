@@ -19,12 +19,6 @@ GameObject::GameObject(Screen& screen, int pos, const char* shape)
 	gameObjectManager.add(this);
 }
 
-GameObject::GameObject(Screen& screen, int pos, int num)
-	:screen(screen), pos(pos)
-{
-	num = 0;
-	gameObjectManager.add(this);
-}
 GameObject::~GameObject() {
 	gameObjectManager.remove(this);
 }

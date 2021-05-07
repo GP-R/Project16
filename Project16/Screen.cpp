@@ -15,10 +15,3 @@ void Screen::draw(const char* shape, int pos)
 {
 	strncpy(&canvas[pos], shape, strlen(shape));
 }
-
-void Screen::draw(int num, int pos)
-{
-	char buf[10];
-	sprintf(buf, "%d", num);
-	strncpy(&canvas[pos], buf, strlen(buf));
-}

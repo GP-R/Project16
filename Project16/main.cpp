@@ -12,11 +12,11 @@ int main()
 {
 	Screen screen{ 80 };
 	int money = 0;
-	UI* uiMoney = new UI{ screen, money, 0 , 2 + 1 };
-	UI* uiPeaShooter = new UI{ screen, "*", 5, 2 + 1 };
-	UI* uiSun = new UI{ screen, "@", uiPeaShooter->getEndpoint(), 2 + 1 };
-	UI* uiPotatoMine = new UI{ screen, "¢À", uiSun->getEndpoint(), 2 + 1 };
-	UI* uiWallnut = new UI{ screen, "¢Æ", uiPotatoMine->getEndpoint(), 2 + 1 };
+	UI* uiMoney = new UI{ screen, "$", 0 , 2 + 1 ,true};
+	UI* uiPeaShooter = new UI{ screen, "*", uiMoney->getEndpoint(), 1 + 1 , false};
+	UI* uiSun = new UI{ screen, "@", uiPeaShooter->getEndpoint(), 1 + 1 , false };
+	UI* uiPotatoMine = new UI{ screen, "¢À", uiSun->getEndpoint(), 1 + 1 , false };
+	UI* uiWallnut = new UI{ screen, "¢Æ", uiPotatoMine->getEndpoint(), 1 + 1 , false };
 
 	bool requestExit = false;
 	while(requestExit == false)
@@ -39,7 +39,7 @@ int main()
 				{
 					if (gos[i] == nullptr) continue;
 					UI* ui = dynamic_cast<UI*>(gos[i]);
-					if (ui == nullptr || ui == uiMoney) continue;
+					if (ui == nullptr) continue;
 					if (ui->isInsideCursor() == true && pressKey == true)
 					{
 						ui->moveRight();
@@ -59,6 +59,7 @@ int main()
 				}
 			}
 		}
+		uiMoney->setData(money);
 		uiPeaShooter->setData();
 		uiSun->setData();
 		uiPotatoMine->setData();
@@ -75,12 +76,6 @@ int main()
 		for (int i = 0; i < capacity; i++)
 		{
 			if (gos[i] == nullptr) continue;
-			UI* ui = dynamic_cast<UI*>(gos[i]);
-			if (ui == uiMoney)
-			{
-				ui->draw(money);
-				continue;
-			}
 			gos[i]->draw();
 		}
 		screen.render();

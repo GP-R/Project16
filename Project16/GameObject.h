@@ -15,7 +15,6 @@ class GameObject {
 	static GameObjectManager gameObjectManager;
 public:
 	GameObject(Screen& screen, int pos, const char* shape);
-	GameObject(Screen& screen, int pos, int num);
 	virtual ~GameObject();
 
 	const char* getShape() const { return shape; }

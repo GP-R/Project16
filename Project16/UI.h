@@ -8,17 +8,16 @@ class UI : public GameObject
 	int sz;
 	static int currentCursor;
 	int count;
-	bool moneyUI;
+	bool fixUI;
 public:
-	UI(Screen& screen, const char* prefix, int pos, int sz);
-	UI(Screen& screen, int num, int pos, int sz);
+	UI(Screen& screen, const char* prefix, int pos, int sz, bool fixUI);
 	~UI();
 	int length() const { return strlen(getShape()) + sz; }
 	int getEndpoint() const { return getPos() + length(); }
 	bool isInsideCursor() const { return getPos() <= currentCursor && currentCursor < getEndpoint(); }
 	void setData();
+	void setData(int value);
 	void draw();
-	void draw(int num);
 	void process_input(int key);
 	void moveLeft();
 	void moveRight();

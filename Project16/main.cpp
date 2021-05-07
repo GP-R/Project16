@@ -11,8 +11,9 @@
 int main()
 {
 	Screen screen{ 80 };
-
-	UI* uiPeaShooter = new UI{ screen, "*", 0, 2 + 1 };
+	int money = 0;
+	UI* uiMoney = new UI{ screen, money, 0 , 2 + 1 };
+	UI* uiPeaShooter = new UI{ screen, "*", 5, 2 + 1 };
 	UI* uiSun = new UI{ screen, "@", uiPeaShooter->getEndpoint(), 2 + 1 };
 	UI* uiPotatoMine = new UI{ screen, "¢À", uiSun->getEndpoint(), 2 + 1 };
 	UI* uiWallnut = new UI{ screen, "¢Æ", uiPotatoMine->getEndpoint(), 2 + 1 };
@@ -38,13 +39,17 @@ int main()
 				{
 					if (gos[i] == nullptr) continue;
 					UI* ui = dynamic_cast<UI*>(gos[i]);
-					if (ui == nullptr) continue;
+					if (ui == nullptr || ui == uiMoney) continue;
 					if (ui->isInsideCursor() == true && pressKey == true)
 					{
 						ui->moveRight();
 						pressKey = false;
 					}
 				}
+			}
+			else if (key == 'm')
+			{
+				money += 50;
 			}
 			else {
 				for (int i = 0; i < capacity; i++)
@@ -70,6 +75,12 @@ int main()
 		for (int i = 0; i < capacity; i++)
 		{
 			if (gos[i] == nullptr) continue;
+			UI* ui = dynamic_cast<UI*>(gos[i]);
+			if (ui == uiMoney)
+			{
+				ui->draw(money);
+				continue;
+			}
 			gos[i]->draw();
 		}
 		screen.render();

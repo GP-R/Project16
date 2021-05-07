@@ -23,5 +23,6 @@ public:
 	void clear();
 	void render();
 	void draw(const char* shape, int pos);
+	void draw(int num, int pos);
 
 };

@@ -31,7 +31,7 @@ int main()
 			int key = _getch();
 			if (key == 'x')
 				break;
-			else if (key == 'n')
+			else if (key == 'd')
 			{
 				pressKey = true;
 				for (int i = 0; i < capacity; i++)
@@ -54,7 +54,10 @@ int main()
 				}
 			}
 		}
-		uiPeaShooter
+		uiPeaShooter->setData();
+		uiSun->setData();
+		uiPotatoMine->setData();
+		uiWallnut->setData();
 		gos = GameObject::getGameObjects();
 		capacity = GameObject::getMaxGameObject();
 		for (int i = 0; i < capacity; i++)

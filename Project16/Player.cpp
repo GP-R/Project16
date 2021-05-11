@@ -4,7 +4,7 @@
 #include"Screen.h"
 #include "Player.h"
 
-int Player::currentCursor = 20;
+int Player::currentCursor = 22;
 
 Player::Player(Screen& screen, const char* shape, int pos, int sz)
 	:GameObject(screen, pos, shape), sz(sz), data((char*)malloc(strlen(shape) + sz + 1))
@@ -52,7 +52,7 @@ void Player::process_input(int key)
 
 void Player::moveLeft()
 {
-	if (isInsideCursor() == false) return; //t -> b -> ab -> e 순서로 들어가서 현재 currentCursor 30근처에 있는것이 this가됌
+	if (isInsideCursor() == false) return; // 8개의 네모를 순서대로 검사함
 
 	GameObject** gos = GameObject::getGameObjects();
 	int capacity = GameObject::getMaxGameObject();

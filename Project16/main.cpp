@@ -8,16 +8,22 @@
 #include"GameObject.h"
 #include"UI.h"
 #include"Screen.h"
+#include"Player.h"
 int main()
 {
 	Screen screen{ 80 };
 	int money = 0;
-	UI* uiMoney = new UI{ screen, "$", 0 , 2 + 1 ,true};
+	UI* uiMoney = new UI{ screen, "$", 0 , 4 + 1 ,true};
 	UI* uiPeaShooter = new UI{ screen, "*", uiMoney->getEndpoint(), 1 + 1 , false};
-	UI* uiSun = new UI{ screen, "@", uiPeaShooter->getEndpoint(), 1 + 1 , false };
-	UI* uiPotatoMine = new UI{ screen, "¢À", uiSun->getEndpoint(), 1 + 1 , false };
-	UI* uiWallnut = new UI{ screen, "¢Æ", uiPotatoMine->getEndpoint(), 1 + 1 , false };
+	UI* uiSun = new UI{ screen, "@", uiPeaShooter->getEndpoint(), 1+ 1 , false};
+	UI* uiPotatoMine = new UI{ screen, "¢À", uiSun->getEndpoint(), 1 + 1 , false};
+	UI* uiWallnut = new UI{ screen, "¡á", uiPotatoMine->getEndpoint(), 1 + 1 , false};
 
+	Player* playBox[8];
+	for (int i = 0; i < 8; i++)
+	{
+		playBox[i] = new Player{ screen, "¡à", uiWallnut->getEndpoint() + (i * 2) , 1 };
+	}
 	bool requestExit = false;
 	while(requestExit == false)
 	{
@@ -64,6 +70,10 @@ int main()
 		uiSun->setData();
 		uiPotatoMine->setData();
 		uiWallnut->setData();
+		for (int i = 0; i < 8; i++)
+		{
+			playBox[i]->setData();
+		}
 		gos = GameObject::getGameObjects();
 		capacity = GameObject::getMaxGameObject();
 		for (int i = 0; i < capacity; i++)

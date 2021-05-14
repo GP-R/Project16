@@ -3,7 +3,7 @@
 #include"GameObject.h"
 #include"Screen.h"
 #include "Player.h"
-
+#include "UI.h"
 int Player::currentCursor = 22;
 
 Player::Player(Screen& screen, const char* shape, int pos, int sz)
@@ -22,6 +22,54 @@ void Player::setData()
 	strncpy(data, buf, length());
 }
 
+void Player::setPlants()
+{
+	GameObject** gos = GameObject::getGameObjects();
+	int capacity = GameObject::getMaxGameObject();
+	for (int i = 0; i < capacity; i++)
+	{
+		if (gos[i] == nullptr || gos[i] == this) continue;
+		UI* ui = dynamic_cast<UI*>(gos[i]);
+		if (ui== nullptr || ui->getBuy() == false) continue;
+		{
+			for (int j = 0; j < capacity; j++)
+			{
+				if (gos[j] == nullptr || gos[j] == this) continue;
+				Player* player = dynamic_cast<Player*>(gos[j]);
+				if (player == nullptr) continue;
+				if (player->isInsideCursor() == true)
+				{
+					player->setShape(ui->getShape());
+					ui->setBuy(false);
+				}
+			}
+		}
+	}
+}
+
+
+void Player::setData(int value)
+{
+	if (isInsideCursor() == false) return;
+	static char buf[100];
+	GameObject** gos = GameObject::getGameObjects();
+	int capacity = GameObject::getMaxGameObject();
+	for (int i = 0; i < capacity; i++)
+	{
+		if (gos[i] == nullptr || gos[i] == this) continue;
+		UI* ui = dynamic_cast<UI*>(gos[i]);
+		if (ui == nullptr) continue;
+		if (ui->isInsideCursor() == true)
+		{
+			sprintf(buf, "%s", ui->getShape());
+			strncpy(data, buf, length());
+			return;
+		}
+	}
+	sprintf(buf, "%s", getShape());
+	strncpy(data, buf, length());
+	return;
+}
 void Player::draw()
 {
 	if (isInsideCursor() == false)
@@ -41,12 +89,14 @@ void Player::process_input(int key)
 {
 	switch (key)
 	{
-	case 75:
+	case 75: // Diretion Left
 		moveLeft();
 		break;
-	case 77:
+	case 77: // Diretion Right
 		moveRight();
 		break;
+	case 32: // space bar
+		setPlants();
 	}
 }
 

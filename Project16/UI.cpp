@@ -5,7 +5,9 @@ int UI::currentCursor = 8;
 
 UI::UI(Screen& screen, const char* prefix, int pos, int sz, bool fixUI = false)
 	:GameObject(screen, pos, prefix), sz(sz), data((char*)malloc(strlen(prefix) + sz + 1)) , fixUI(fixUI)
-{}
+{
+	isBuy = false;
+}
 
 UI::~UI()
 {
@@ -50,6 +52,9 @@ void UI::process_input(int key)
 		break;
 	case 'd': 
 		moveRight(); 
+		break;
+	case 'b':
+		buyPlants();
 		break;
 	}
 }
@@ -105,4 +110,22 @@ void UI::update()
 	if (isInsideCursor() == false) return;
 
 	count++;
+}
+
+void UI::buyPlants() //예외상황 : 구매하고 ui커서를 옮겼을때 
+{
+	GameObject** gos = GameObject::getGameObjects();
+	int capacity = GameObject::getMaxGameObject();
+	for (int i = 0; i < capacity; i++)
+	{
+		if (gos[i] == nullptr || gos[i] == this) continue;
+		UI* ui = dynamic_cast<UI *>(gos[i]);
+		if (ui == nullptr) continue;
+		if (ui->isInsideCursor() == true)
+		{
+			ui->setBuy(true);
+			return;
+		}
+	}
+	return;
 }

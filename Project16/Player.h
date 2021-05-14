@@ -14,9 +14,11 @@ public:
 	int getEndpoint() const { return getPos() + length(); }
 	bool isInsideCursor() const { return getPos() <= currentCursor && currentCursor < getEndpoint(); }
 	void setData();
+	void setData(int value);
 	void draw();
 	void process_input(int key);
 	void moveLeft();
 	void moveRight();
 	void update();
+	void setPlants();
 };
